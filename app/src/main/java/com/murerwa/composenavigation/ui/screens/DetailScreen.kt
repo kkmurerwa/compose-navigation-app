@@ -2,6 +2,7 @@ package com.murerwa.composenavigation.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -13,24 +14,33 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.murerwa.composenavigation.ui.components.common.CustomTopAppBar
 
 @Composable
 fun DetailScreen(
     navController: NavHostController
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
+    Column(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(
-            modifier = Modifier.clickable {
-                navController.popBackStack()
-            },
-            text = "Detail Screen",
-            fontWeight = FontWeight.Bold,
-            fontSize = MaterialTheme.typography.h3.fontSize,
-            color = Color.Red
+        CustomTopAppBar(
+            title = "Detail",
+            onBackClick = { navController.popBackStack() }
         )
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                modifier = Modifier.clickable {
+                    navController.popBackStack()
+                },
+                text = "Detail Screen",
+                fontWeight = FontWeight.Bold,
+                fontSize = MaterialTheme.typography.h3.fontSize,
+                color = Color.Red
+            )
+        }
     }
 }
 
